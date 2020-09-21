@@ -1,10 +1,17 @@
 import { MSGraphClient } from '@microsoft/sp-http';
 import {IAction,IGraphItems,actionTypes, GraphUser} from '../../Interface';
 
-export const showData = (graphClient: MSGraphClient)=> {
+export const showData = (graphClient: MSGraphClient,searchTerm:string)=> {
+  let apiUrl:string;
+  if(searchTerm.trim() == ''){
+    apiUrl = '/users?$select=displayName,mail,jobTitle,mobilePhone,officeLocation,id,userPrincipalName';
+  }
+  else{
+    apiUrl = `/users?$filter=startswith(displayName,'${searchTerm}') or startswith(mail,'${searchTerm}')&$select=displayName,mail,jobTitle,mobilePhone,officeLocation,id,userPrincipalName`;
+  }
     return dispatch => {
       graphClient
-      .api('/users?$select=displayName,mail,jobTitle,mobilePhone,officeLocation,id,userPrincipalName')
+      .api(apiUrl)
       .get((error: any, users: any, rawResponse?: any) => {
         if(users!=null)
             dispatch(postDataSuccess(users.value));
@@ -36,11 +43,11 @@ export const deleteData = (graphClient: MSGraphClient, id: string)=> {
     .delete()
     .then(()=>{
       alert('User Deleted Successfully');
-      dispatch(showData(graphClient));
+      dispatch(showData(graphClient,''));
     })
     .catch(error=>{
       alert('An Error has occurred: '+error);
-      dispatch(showData(graphClient));
+      dispatch(showData(graphClient,''));
     });
   }
 };

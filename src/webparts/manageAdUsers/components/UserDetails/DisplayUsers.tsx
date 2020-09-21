@@ -7,7 +7,7 @@ import styles from '../ManageAdUsers.module.scss';
 
 export interface IStateProps {
     items: IGraphItems[];
-    onShowData: (graphClient:MSGraphClient)=> {};
+    onShowData: (graphClient:MSGraphClient,searchTerm:string)=> {};
     onLoadAddData: () => {};
     graphClient: MSGraphClient;
     deleteData: (graphClient:MSGraphClient, id:string)=>{};
@@ -16,7 +16,7 @@ export interface IStateProps {
 class Display extends React.Component<IStateProps,{}>{
 
     componentDidMount(){
-        this.props.onShowData(this.props.graphClient);
+        this.props.onShowData(this.props.graphClient,'');
     }
 
     private deleteUser = (id:string) => {
@@ -24,13 +24,6 @@ class Display extends React.Component<IStateProps,{}>{
             this.props.deleteData(this.props.graphClient,id);
         }
     }
-
-    private editUser = (id:string) => {
-        if(confirm("Are you sure you want to delete this user?")){
-            this.props.deleteData(this.props.graphClient,id);
-        }
-    }
-
 
     public render():React.ReactElement<IStateProps>{
         const divClassName = "col-md-12";
@@ -40,12 +33,14 @@ class Display extends React.Component<IStateProps,{}>{
                     <div className="col-md-12">
                             <h2 style={{color:'#3c4573'}}>{item.displayName}</h2>
                     </div>
-                    <div className="col-md-12"><p style={{color:'#4c4e57'}}>{item.jobTitle}, {item.officeLocation}</p></div>
+                    <div className="col-md-12"><p 
+                    style={{color:'#4c4e57'}}>{item.jobTitle}, {item.officeLocation}</p></div>
                     <div style={{color:'#3c4573'}}>
                         <div className="col-md-5"><i className="fa fa-envelope"></i> {item.mail}</div>
                         <div className="col-md-5"><i className="fa fa-phone"></i> {item.mobilePhone}</div>
                         <div className="col-md-2" style={{textAlign:'right'}}>
-                            <i style={{color:'red',marginLeft:'10px'}} className="fa fa-trash" onClick={()=>{this.deleteUser(item.id)}}></i>
+                            <i style={{color:'red',marginLeft:'10px'}} 
+                            className="fa fa-trash" onClick={()=>{this.deleteUser(item.id)}}></i>
                         </div>
                     </div>
                     <div className="col-md-12" style={{height:'10px'}}>
@@ -56,11 +51,16 @@ class Display extends React.Component<IStateProps,{}>{
 
         return (
             <div className="col-md-12">
-                  <div className="col-md-10">         
-                    
-                    </div>
-                <div className="col-md-2" style={{textAlign:'right'}}>
-                    <button className="btn btn-primary" onClick={()=>{this.props.onLoadAddData()}}>ADD USER</button>
+                <div className="col-md-10">         
+                    <input 
+                    onChange={(event)=>this.props.onShowData(this.props.graphClient,event.target.value)} 
+                    type="text" 
+                    style={{width:'100%',height:'35px',border:'1px solid #3c4573'}} 
+                    placeholder="Enter Search Term"/>
+                </div>
+                <div className="col-md-2">
+                    <button className="btn btn-primary"
+                     onClick={()=>{this.props.onLoadAddData()}}>ADD USER</button>
                 </div>            
                 {allItems}
             </div>
@@ -76,7 +76,7 @@ const mapStateToProps = (state:IApplicationState) => {
 
 const mapDispatchToProps = (dispatch:any) => {
     return{
-        onShowData: (graphClient:MSGraphClient) => dispatch(showData(graphClient)),
+        onShowData: (graphClient:MSGraphClient,searchTerm:string) => dispatch(showData(graphClient,searchTerm)),
         onLoadAddData: () => dispatch(loadAddUsers()),
         deleteData: (graphClient:MSGraphClient, id:string) => dispatch(deleteData(graphClient,id))
     };
