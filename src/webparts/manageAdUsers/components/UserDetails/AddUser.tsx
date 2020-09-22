@@ -44,89 +44,89 @@ class AddUser extends React.Component<IStateProps,{}>{
     public render():React.ReactElement<IStateProps>{
         var errorMessage = null;
         if(!this.props.isAddValid){
-            errorMessage = <div className="col-md-12 alert alert-danger" role="alert">Please fill all mandatory fields before submitting the request.</div>
+            errorMessage = <div className="col-xs-12 alert alert-danger" role="alert">Please fill all mandatory fields before submitting the request.</div>
         }
         return (
             <div style={{ marginBottom: '20px'}}>
-                    <div style={{backgroundColor:'#3c73c7',height:'25px'}}>
+                    <div style={{backgroundColor:'#43cacc',height:'20px'}}>
                                 <div className={styles.FeedTitle}>
                                     ADD USER
                                 </div>
                     </div>
-                    <div className= "col-md-12" style={{backgroundColor:'white',border:'1px solid #e3e8e8'}}>
-                        <div className="col-md-12" style={{marginTop:'10px'}}>
-                            <div className="col-md-3">
+                    <div className= "col-xs-12" style={{backgroundColor:'white',border:'1px solid #e3e8e8'}}>
+                        <div className="col-xs-12" style={{marginTop:'10px'}}>
+                            <div className="col-xs-4">
                                 <label style={{fontWeight:'bold'}}>Display Name <label style={{color:'red'}}>*</label></label>
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-xs-8">
                                 <input onChange={(event)=>{this.onFormFieldChange(event,'DISPLAY')}} style={{width:'100%'}} type="text" defaultValue={this.props.addItem.displayName} ></input>
                             </div>
                         </div>
-                        <div className="col-md-12" style={{marginTop:'10px'}}>
-                            <div className="col-md-3">
+                        <div className="col-xs-12" style={{marginTop:'10px'}}>
+                            <div className="col-xs-4">
                                 <label style={{fontWeight:'bold'}}>Mail Nick Name <label style={{color:'red'}}>*</label></label>
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-xs-8">
                                 <input onChange={(event)=>{this.onFormFieldChange(event,'NICK')}} style={{width:'100%'}} type="text" defaultValue={this.props.addItem.mailNickname}></input>
                             </div>
                         </div> 
-                        <div className="col-md-12" style={{marginTop:'10px'}}>
-                            <div className="col-md-3">
+                        <div className="col-xs-12" style={{marginTop:'10px'}}>
+                            <div className="col-xs-4">
                                 <label style={{fontWeight:'bold'}}>Mail ID <label style={{color:'red'}}>*</label></label>
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-xs-8">
                                 <input onChange={(event)=>{this.onFormFieldChange(event,'MAIL')}} style={{width:'100%'}} type="text" defaultValue={this.props.addItem.mailNickname}></input>
                             </div>
                         </div>                      
-                        <div className="col-md-12" style={{marginTop:'10px'}}>
-                            <div className="col-md-3">
+                        <div className="col-xs-12" style={{marginTop:'10px'}}>
+                            <div className="col-xs-4">
                                 <label style={{fontWeight:'bold'}}>Principal Name <label style={{color:'red'}}>*</label></label>
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-xs-8">
                                 <input onChange={(event)=>{this.onFormFieldChange(event,'NAME')}} style={{width:'100%'}} type="text" defaultValue={this.props.addItem.userPrincipalName}></input>
                             </div>
                         </div>
-                        <div className="col-md-12" style={{marginTop:'10px'}}>
-                            <div className="col-md-3">
+                        <div className="col-xs-12" style={{marginTop:'10px'}}>
+                            <div className="col-xs-4">
                                 <label style={{fontWeight:'bold'}}>Designation <label style={{color:'red'}}>*</label></label>
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-xs-8">
                                 <input onChange={(event)=>{this.onFormFieldChange(event,'DESIGNATION')}} style={{width:'100%'}} type="text" defaultValue={this.props.addItem.jobTitle}></input>
                             </div>
                         </div>
-                        <div className="col-md-12" style={{marginTop:'10px'}}>
-                            <div className="col-md-3">
+                        <div className="col-xs-12" style={{marginTop:'10px'}}>
+                            <div className="col-xs-4">
                                 <label style={{fontWeight:'bold'}}>Phone <label style={{color:'red'}}>*</label></label>
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-xs-8">
                                 <input onChange={(event)=>{this.onFormFieldChange(event,'PHONE')}} style={{width:'100%'}} type="text" defaultValue={this.props.addItem.mobilePhone}></input>
                             </div>
                         </div>
-                        <div className="col-md-12" style={{marginTop:'10px'}}>
-                            <div className="col-md-3">
+                        <div className="col-xs-12" style={{marginTop:'10px'}}>
+                            <div className="col-xs-4">
                                 <label style={{fontWeight:'bold'}}>Office Location <label style={{color:'red'}}>*</label></label>
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-xs-8">
                                 <input onChange={(event)=>{this.onFormFieldChange(event,'LOCATION')}} style={{width:'100%'}} type="text" defaultValue={this.props.addItem.officeLocation}></input>
                             </div>
                         </div>
-                        <div className="col-md-12" style={{marginTop:'10px'}}>
-                            <div className="col-md-3">
+                        <div className="col-xs-12" style={{marginTop:'10px'}}>
+                            <div className="col-xs-4">
                                 <label style={{fontWeight:'bold'}}>Password <label style={{color:'red'}}>*</label></label>
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-xs-8">
                                 <input onChange={(event)=>{this.onFormFieldChange(event,'PASSWORD')}} style={{width:'100%'}} type="password" defaultValue={this.props.addItem.passwordProfile.password}></input>
                             </div>
                         </div>
                        
-                        <div className="col-md-12" style={{marginTop:'10px',marginBottom:'10px'}}>
-                            <div className="col-md-8">
+                        <div className="col-xs-12" style={{marginTop:'10px',marginBottom:'10px'}}>
+                            <div className="col-xs-6">
                             </div>
-                            <div className="col-md-2">
-                                <button type="button" onClick = {()=>this.onSubmit()} className="btn btn-primary" style={{marginLeft:'10px',marginTop:'5px'}}>Submit</button>
+                            <div className="col-xs-3">
+                                <button type="button" onClick = {()=>this.onSubmit()} className="btn btn-success" style={{marginLeft:'10px',marginTop:'5px'}}>Submit</button>
                             </div>
-                            <div className="col-md-2">
-                                <button type="button" className="btn btn-primary" style={{marginLeft:'10px',marginTop:'5px'}} onClick={()=>this.props.loadAddUsers()}>Cancel</button>
+                            <div className="col-xs-3">
+                                <button type="button" className="btn btn-danger" style={{marginLeft:'10px',marginTop:'5px'}} onClick={()=>this.props.loadAddUsers()}>Cancel</button>
                             </div>                           
                         </div>  
                        {errorMessage}

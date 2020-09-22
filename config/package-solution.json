@@ -3,7 +3,8 @@
   "solution": {
     "name": "manage-ad-users-client-side-solution",
     "id": "39426b9f-ec4d-43c7-af46-12333c4c04ab",
-    "version": "1.0.0.3",
+    "version": "1.0.0.8",
+    "skipFeatureDeployment": true,
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "webApiPermissionRequests": [

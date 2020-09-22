@@ -26,40 +26,40 @@ class Display extends React.Component<IStateProps,{}>{
     }
 
     public render():React.ReactElement<IStateProps>{
-        const divClassName = "col-md-12";
+        const divClassName = "col-xs-12";
         const allItems = this.props.items.map((item)=>{
             return (
                 <div className={divClassName} style={{border:'1px solid #e8e8e8', margin:'5px', cursor:'pointer'}}>
-                    <div className="col-md-12">
+                    <div className="col-xs-12">
                             <h2 style={{color:'#3c4573'}}>{item.displayName}</h2>
                     </div>
-                    <div className="col-md-12"><p 
+                    <div className="col-xs-12"><p 
                     style={{color:'#4c4e57'}}>{item.jobTitle}, {item.officeLocation}</p></div>
                     <div style={{color:'#3c4573'}}>
-                        <div className="col-md-5"><i className="fa fa-envelope"></i> {item.mail}</div>
-                        <div className="col-md-5"><i className="fa fa-phone"></i> {item.mobilePhone}</div>
-                        <div className="col-md-2" style={{textAlign:'right'}}>
+                        <div className="col-xs-7"><i className="fa fa-envelope"></i> {item.mail}</div>
+                        <div className="col-xs-3"><i className="fa fa-phone"></i> {item.mobilePhone}</div>
+                        <div className="col-xs-2" style={{textAlign:'right'}}>
                             <i style={{color:'red',marginLeft:'10px'}} 
                             className="fa fa-trash" onClick={()=>{this.deleteUser(item.id)}}></i>
                         </div>
                     </div>
-                    <div className="col-md-12" style={{height:'10px'}}>
+                    <div className="col-xs-12" style={{height:'10px'}}>
                     </div>
                 </div>
             );
         });
 
         return (
-            <div className="col-md-12">
-                <div className="col-md-10">         
+            <div className="col-xs-12">
+                <div className="col-xs-10">         
                     <input 
                     onChange={(event)=>this.props.onShowData(this.props.graphClient,event.target.value)} 
                     type="text" 
-                    style={{width:'100%',height:'35px',border:'1px solid #3c4573'}} 
+                    style={{width:'100%',border:'1px solid #3c4573',height:'30px'}} 
                     placeholder="Enter Search Term"/>
                 </div>
-                <div className="col-md-2">
-                    <button className="btn btn-primary"
+                <div className="col-xs-2">
+                    <button className="btn btn-info"
                      onClick={()=>{this.props.onLoadAddData()}}>ADD USER</button>
                 </div>            
                 {allItems}
